@@ -1,0 +1,466 @@
+{% extends 'base.html' %}
+{% block title %} Movies {% endblock %}
+{% block content %}
+<div class="hero mv-single-hero">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<!-- <h1> movie listing - list</h1>
+				<ul class="breadcumb">
+					<li class="active"><a href="#">Home</a></li>
+					<li> <span class="ion-ios-arrow-right"></span> movie listing</li>
+				</ul> -->
+			</div>
+		</div>
+	</div>
+</div>
+{% if title %}
+<div class="page-single movie-single movie_single">
+	<div class="container">
+		<div class="row ipad-width2">
+			<div class="col-md-4 col-sm-12 col-xs-12">
+				<div class="movie-img sticky-sb">
+					<img src="https://image.tmdb.org/t/p/original{{poster}}" alt="">
+					<div class="movie-btn">
+						
+						<div class="btn-transform transform-vertical red">
+							<div><a href="#" class="item item-1 redbtn"> <i class="ion-play"></i> Watch Trailer</a></div>
+							<div><a href="#" class="item item-2 redbtn fancybox-media hvr-grow"><i class="ion-play"></i></a></div>
+						</div>
+						
+						<div class="btn-transform transform-vertical">
+							<div><a href="#" class="item item-1 yellowbtn"> <i class="ion-card"></i> Buy ticket</a></div>
+							<div><a href="#" class="item item-2 yellowbtn"><i class="ion-card"></i></a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-8 col-sm-12 col-xs-12">
+				<div class="movie-single-ct main-content">
+					<h1 class="bd-hd">{{title}} <span>{{release_date}}</span></h1>
+					
+					<div class="movie-rate">
+						<div class="rate">
+							<i class="ion-android-star"></i>
+							<p><span>{{vote_average}}</span> /10<br>
+							
+							</p>
+						</div>
+					</div>
+					<div class="movie-tabs">
+						<div class="tabs">
+							<ul class="tab-links tabs-mv">
+								<li class="active"><a href="#overview">Overview</a></li>
+								<li><a href="#reviews"> Reviews</a></li>
+								<li><a href="#cast">  Cast & Crew </a></li>
+								<li><a href="#media"> Media</a></li> 
+								<li><a href="#moviesrelated"> Related Movies</a></li>                        
+							</ul>
+						    <div class="tab-content">
+						        <div id="overview" class="tab active">
+						            <div class="row">
+						            	<div class="col-md-8 col-sm-12 col-xs-12">
+						            		<p>{{overview}}</p>
+						            		
+											
+											<div class="title-hd-sm">
+												<h4>cast</h4>
+												<a href="#" class="time">Full Cast & Crew  <i class="ion-ios-arrow-right"></i></a>
+											</div>
+											<!-- movie cast -->
+											<div class="mvcast-item">
+												{% for i,k in actors_info.items() %}									
+												<div class="cast-it">
+													<div class="cast-left">
+														<img src="https://image.tmdb.org/t/p/original{{ k[3] }}" alt="" style="width: 100px;height: 100px;">
+														<a id ="actor_name" href="#">{{i}}</a>
+													</div>
+													<p>...  Robert Downey Jr.</p>
+												</div>
+												{% endfor %}
+											</div>
+											<div class="title-hd-sm">
+												<h4>User reviews</h4>
+												<a href="#" class="time">See All 56 Reviews <i class="ion-ios-arrow-right"></i></a>
+											</div>
+											<!-- movie user review -->
+											<div class="mv-user-review-item">
+												
+												
+												
+											</div>
+
+											<div class="title-hd-sm">
+												<h4>StoryLine</h4>
+											
+											</div>
+												<div class="mv-user-review-item">
+												<p class="more">{{storyline}}</p>
+												
+												</div>
+											<div class="title-hd-sm">
+												<h4>Related News</h4>
+
+												
+											</div>
+											
+											
+												{% for k,v in relate_news.items() %}
+												<div class="cast-left" style="margin-top: 30px;">
+													<img src="{{v[1]}}" style="width: 100px;height: 100px;">
+													<a href="{{v[0]}}" target="_blank"><p style="padding-top: 10px;">{{k}}</p></a>
+												</div>
+												{% endfor %}
+												
+
+						            	</div>
+						            	<div class="col-md-4 col-xs-12 col-sm-12">
+						            		<div class="sb-it">
+						            			<h6>Director: </h6>
+						            			<p><a href="#">{{director}}</a></p>
+						            		</div>
+						            		<div class="sb-it">
+						            			<h6>Writer: </h6>
+						            			<p><a href="#">{{writer}}</a></p>
+						            		</div>
+						            		<div class="sb-it">
+						            			<h6>Stars: </h6>
+						            			<p>
+													
+													<a href="#">ghfh</a>
+													
+												</p>
+						            		</div>
+						            		<div class="sb-it">
+						            			<h6>Genres:</h6>
+						            			<p>
+													
+													<a href="#">fddg</a> 
+													
+												</p>
+						            		</div>
+						            		<div class="sb-it">
+						            			<h6>Release Date:</h6>
+						            			<p>{{release_date}}</p>
+						            		</div>
+											
+						            		<div class="sb-it">
+						            			<h6>Run Time:</h6>
+						            			<p>{{runtime}} Min</p>
+						            		</div>
+						            		<div class="sb-it">
+						            			<h6>MMPA Rating:</h6>
+						            			<p>PG-13</p>
+						            		</div>
+						            		<div class="sb-it">
+						            			<h6>Plot Keywords:</h6>
+						            			<p class="tags">
+						            				<span class="time"><a href="#">superhero</a></span>
+													<span class="time"><a href="#">marvel universe</a></span>
+													<span class="time"><a href="#">comic</a></span>
+													<span class="time"><a href="#">blockbuster</a></span>
+													<span class="time"><a href="#">final battle</a></span>
+						            			</p>
+						            		</div>
+						            		
+											<div class="sb-it">
+												<h6>Box Office:</h6>
+												<P>Budget: <br>2600000</P>
+												<p>Opening weekend US & Canada</p>
+											</div>
+						            	</div>
+						            </div>
+						        </div>
+						        <div id="reviews" class="tab review">
+						           <div class="row">
+						            	<div class="rv-hd">
+						            		<div class="div">
+							            		<h3>Related Movies To</h3>
+						       	 				<h2>{{title}}</h2>
+							            	</div>
+						            	</div>
+										
+										
+						            	
+										<div class="mv-user-review-item col-md-12" >
+											<div>
+												
+												<table style="border: 3px; border-color: aliceblue; color: aliceblue;">
+													
+													
+												</table>
+												<table>
+													<tr>
+														<th style="width: 75%">reviews</th>
+													
+														<th>sentiment</th>
+													</tr>
+													<tbody>
+														
+													{% for i,k in movie_reviews.items() %}
+														<tr>
+														
+														<td class="content" style="color: aliceblue;">  
+														
+														
+														
+														
+														<span class="more" style="clear: both;">{{i}}</span> <br /> <br /> Read Summary: <br /> <span class="more">{{k[1]}}</span> 
+														
+														<br />
+														
+														</td>
+														
+														
+														<td class="content addReadMore showlesscontent">{{k[0]}}</td>
+														</tr>
+													{% endfor %}
+													</tbody>
+												</table>
+											</div>
+											<a href="#" id="loadMore">Load More</a>
+
+										</div>
+						            </div>
+						        </div>
+						        <div id="cast" class="tab" style="width: 900px;">
+						        	<div class="row" style="background-color: aliceblue;">
+						            	<h3>Cast & Crew of</h3>
+					       	 			<h2>Avengers: Age of Ultron</h2>
+											<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+											<script>
+											var r = {{rating_num|tojson}}
+											var xValue  = []
+											var yValues = []
+											for (const [key, value] of Object.entries(r)) {
+												xValue.push(`${key}`);
+												yValues.push(`${value}`)
+												}	
+											
+											
+											yValues.pop()
+											xValue.pop()
+											var barColors = ["red", "green","blue","orange","brown","green","blue","red","orange","brown"];
+											
+											new Chart("myChart", {
+											  type: "bar",
+											  data: {
+												labels: xValue,
+												datasets: [{
+												  backgroundColor: barColors,
+												  data: yValues
+												}]
+											  },
+											  options: {
+												legend: {display: false},
+												title: {
+												  display: true,
+												  text: "Rating Of Movie"
+												}
+											  }
+											});
+											</script>
+											
+											<canvas id="myChart1" style="width:100%;max-width:600px;padding-top: 100px;"></canvas>
+											<script>
+											var r = {{age_rate|tojson}}
+											var xValue  = []
+											var yValues = []
+											for (const [key, value] of Object.entries(r)) {
+												xValue.push(`${key}`);
+												yValues.push(`${value}`)
+												}	
+											
+											
+											
+											var barColors = ["red", "green","blue","orange","brown","green","blue","red","orange","brown"];
+											
+											new Chart("myChart1", {
+											  type: "bar",
+											  data: {
+												labels: xValue,
+												datasets: [{
+												  backgroundColor: barColors,
+												  data: yValues
+												}]
+											  },
+											  options: {
+												legend: {display: false},
+												title: {
+												  display: true,
+												  text: "Rating Of Movie by Age Group"
+												}
+											  }
+											});
+											</script>
+
+												
+	
+												<canvas id="myChart2" style="width:100%;max-width:600px;padding-top: 100px;"></canvas>
+												<script>
+												var r = {{income|tojson}}
+												var xValue  = []
+												var yValues = []
+												for (const [key, value] of Object.entries(r)) {
+													xValue.push(`${key}`);
+													yValues.push(`${value}`)
+													}	
+
+
+
+												var barColors = ["red", "green","blue","orange","brown","green","blue","red","orange","brown"];
+
+												new Chart("myChart2", {
+												type: "bar",
+												data: {
+													labels: xValue,
+													datasets: [{
+													backgroundColor: barColors,
+													data: yValues
+													}]
+												},
+												options: {
+													legend: {display: false},
+													title: {
+													display: true,
+													text: "Gross income of top 10 countries"
+													}
+												}
+												});
+												</script>
+
+
+												<canvas id="myChart3" style="width:100%;max-width:600px;padding-top: 100px;"></canvas>
+												<script>
+												var r = {{weekend_income|tojson}}
+												var xValue  = []
+												var yValues = []
+												for (const [key, value] of Object.entries(r)) {
+													xValue.push(`${key}`);
+													yValues.push(`${value}`)
+													}	
+
+
+
+												var barColors = ["red", "green","blue","orange","brown","green","blue","red","orange","brown"];
+
+												new Chart("myChart3", {
+												type: "bar",
+												data: {
+													labels: xValue,
+													font: {
+															size: 16
+													},
+													datasets: [{
+													backgroundColor: barColors,
+													data: yValues
+													}]
+												},
+												options: {
+													legend: {display: false},
+													title: {
+													display: true,
+													text: "Gross income Openning Weekend"
+													}
+												}
+												});
+												</script>
+												
+						            </div>
+									
+					       	 	</div>
+					       	 	<div id="media" class="tab">
+						        	<div class="row">
+						        		<div class="rv-hd">
+						            		<div>
+						            			<h3>Videos & Photos of</h3>
+					       	 					<h2>Skyfall: Quantum of Spectre</h2>
+						            		</div>
+						            	</div>
+						            	<div class="title-hd-sm">
+											<h4>Videos <span>(8)</span></h4>
+										</div>
+										<div class="mvsingle-item media-item">
+											<div class="vd-item">
+												<div class="vd-it">
+													<img class="vd-img" src="images/uploads/vd-item1.jpg" alt="">
+													<a class="fancybox-media hvr-grow"  href="https://www.youtube.com/embed/o-0hcF97wy0"><img src="images/uploads/play-vd.png" alt=""></a>
+												</div>
+												<div class="vd-infor">
+													<h6> <a href="#">Trailer:  Watch New Scenes</a></h6>
+													<p class="time"> 1: 31</p>
+												</div>
+											</div>
+
+
+
+											
+											
+											
+											
+										</div>
+							
+										
+						        	</div>
+					       	 	</div>
+					       	 	<div id="moviesrelated" class="tab">
+					       	 		<div class="row">
+					       	 			<h3>Related Movies To</h3>
+					       	 			<h2>Skyfall: Quantum of Spectre</h2>
+					       	 			<div class="topbar-filter">
+											<p>Found <span>12 movies</span> in total</p>
+											<label>Sort by:</label>
+											<select>
+												<option value="popularity">Popularity Descending</option>
+												<option value="popularity">Popularity Ascending</option>
+												<option value="rating">Rating Descending</option>
+												<option value="rating">Rating Ascending</option>
+												<option value="date">Release date Descending</option>
+												<option value="date">Release date Ascending</option>
+											</select>
+										</div>
+										{% for i, k in reco_detail.items() %}
+										<div class="movie-item-style-2">
+											<img src="https://image.tmdb.org/t/p/original{{ k[0]}}" alt="">
+											<div class="mv-item-infor">
+												<h6 id="reco_title" ><a href="#">{{k[6]}} </a></h6>
+												<p class="rate"><i class="ion-android-star"></i><span>{{k[2]}}</span> /10</p>
+												<p class="describe">{{k[1]}}</p>
+												<p class="run-time"> Run Time: {{k[3]}}   .     <span>MMPA: PG-13 </span>    .     <span>Release: {{k[4]}}</span></p>
+												<p>Director: <a href="#">{{k[5]}}</a></p>
+												<p>Stars: <a href="#">Robert Downey Jr.,</a> <a href="#">Chris Evans,</a> <a href="#">  Chris Hemsworth</a></p>
+											</div>
+										</div>
+										{% endfor %}
+										
+										
+
+
+										<div class="topbar-filter">
+											<label>Movies per page:</label>
+											<select>
+												<option value="range">5 Movies</option>
+												<option value="saab">10 Movies</option>
+											</select>
+											<div class="pagination2">
+												<span>Page 1 of 2:</span>
+												<a class="active" href="#">1</a>
+												<a href="#">2</a>
+												<a href="#"><i class="ion-arrow-right-b"></i></a>
+											</div>
+										</div>
+					       	 		</div>
+					       	 	</div>
+						    </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% else %}
+<h1>sdada</h1>
+{% endif %}
+{% endblock %}

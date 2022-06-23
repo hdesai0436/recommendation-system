@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="hero hero3">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<!-- <h1> movie listing - list</h1>
+				<ul class="breadcumb">
+					<li class="active"><a href="#">Home</a></li>
+					<li> <span class="ion-ios-arrow-right"></span> movie listing</li>
+				</ul> -->
+			</div>
+		</div>
+	</div>
+</div>
+<!-- celebrity single section-->
+{% for h,k in person_detail.items() %}
+<div class="page-single movie-single cebleb-single">
+	<div class="container">
+		<div class="row ipad-width">
+			<div class="col-md-4 col-sm-12 col-xs-12">
+				<div class="mv-ceb">
+					<img src="https://image.tmdb.org/t/p/original{{k[0]}}" alt="">
+				</div>
+			</div>
+			<div class="col-md-8 col-sm-12 col-xs-12">
+				
+				<div class="movie-single-ct">
+					<h1 class="bd-hd">{{h}}</h1>
+					<p class="ceb-single">Actor  |  Producer</p>
+					<div class="social-link cebsingle-socail">
+						<a href="#"><i class="ion-social-facebook"></i></a>
+						<a href="#"><i class="ion-social-twitter"></i></a>
+						<a href="#"><i class="ion-social-googleplus"></i></a>
+						<a href="#"><i class="ion-social-linkedin"></i></a>
+					</div>
+					<div class="movie-tabs">
+						<div class="tabs">
+							<ul class="tab-links tabs-mv">
+								<li class="active"><a href="#overviewceb">Overview</a></li>
+								                      
+							</ul>
+						    <div class="tab-content">
+						        <div id="overviewceb" class="tab active">
+						            <div class="row">
+						            	<div class="col-md-8 col-sm-12 col-xs-12">
+						            		<p>{{k[1]}}</p>
+						            		
+											<div class="mvsingle-item ov-item">
+												<a class="img-lightbox"  data-fancybox-group="gallery" href="images/uploads/image11.jpg" ><img src="images/uploads/image1.jpg" alt=""></a>
+												<a class="img-lightbox"  data-fancybox-group="gallery" href="images/uploads/image21.jpg" ><img src="images/uploads/image2.jpg" alt=""></a>
+												<a class="img-lightbox"  data-fancybox-group="gallery" href="images/uploads/image31.jpg" ><img src="images/uploads/image3.jpg" alt=""></a>
+												<div class="vd-it">
+													<img class="vd-img" src="images/uploads/image4.jpg" alt="">
+													<a class="fancybox-media hvr-grow" href="https://www.youtube.com/embed/o-0hcF97wy0"><img src="images/uploads/play-vd.png" alt=""></a>
+												</div>
+											</div>
+											<div class="title-hd-sm">
+												<h4>filmography</h4>
+												<a href="#" class="time">Full Filmography<i class="ion-ios-arrow-right"></i></a>
+											</div>
+											<!-- movie cast -->
+											<div class="mvcast-item">
+                                                {% for i,j in all_movie_by_person.items() %}											
+												<div class="cast-it">
+													<div class="cast-left cebleb-film">
+														<img src="https://image.tmdb.org/t/p/original{{j[2]}}" alt=""  style="width: 100px;height: 100px;">
+														<div>
+															<a id = 'reco_title' href="#">{{i}} </a>
+															<p class="time">{{j[1]}}</p>
+														</div>
+														
+													</div>
+													<p>...  {{j[0]}}</p>
+												</div>
+                                                {% endfor %}
+											</div>
+						            	</div>
+						            	<div class="col-md-4 col-xs-12 col-sm-12">
+						            		<div class="sb-it">
+						            			<h6>Fullname:  </h6>
+						            			<p><a href="#">{{h}}</a></p>
+						            		</div>
+						            		<div class="sb-it">
+						            			<h6>Date of Birth: </h6>
+						            			<p>{{k[2]}}</p>
+						            		</div>
+											<div class="sb-it">
+						            			<h6>Place of Birth: </h6>
+						            			<p>{{k[3]}}</p>
+						            		</div>
+						            		
+						            		
+						            		
+						            		
+						            	</div>
+						            </div>
+						        </div>
+						        
+
+					       	 	
+						    </div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	</div>
+</div>
+{% endfor %}
+{% endblock %}

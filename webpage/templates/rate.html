@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block title %} Userrated {% endblock %}
+
+{% block content %}
+<div class="hero user-hero">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="hero-ct">
+					<h1>Edward kennedy’s profile</h1>
+					<ul class="breadcumb">
+						<li class="active"><a href="#">Home</a></li>
+						<li> <span class="ion-ios-arrow-right"></span>Profile</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="page-single">
+	<div class="container">
+		<div class="row ipad-width2">
+			<div class="col-md-3 col-sm-12 col-xs-12">
+				<div class="user-information">
+					<div class="user-img">
+						<a href="#"><img src="images/uploads/user-img.png" alt=""><br></a>
+						<a href="#" class="redbtn">Change avatar</a>
+					</div>
+					<div class="user-fav">
+						<p>Account Details</p>
+						<ul>
+							<li><a href="{{url_for('authy.profile',user_id=user.id)}}">Profile</a></li>
+							<li><a href="{{url_for('authy.user_favorite',user_id=user.id)}}">Favorite movies</a></li>
+							<li class="active"><a href="{{url_for('authy.user_rate',user_id=user.id)}}">Rated movies</a></li>
+						</ul>
+					</div>
+					
+				</div>
+			</div>
+			<div class="col-md-9 col-sm-12 col-xs-12">
+				{% if user_rate|length > 0 %}
+                {% for i in user_rate %}
+				<div class="movie-item-style-2 userrate">
+					<img src="https://image.tmdb.org/t/p/original{{i[0].poster}}" alt="">
+					<div class="mv-item-infor">
+						<h6><a href="#">{{i[0].title}} <span>(2012)</span></a></h6>
+						<p class="time sm-text">your rate: {{i[1].score}}</p>
+						<p class="rate"><i class="ion-android-star"></i><span>{{i[0].vote_average}}</span> /10</p>
+					
+					</div>
+				</div>
+				{% endfor %}
+                {% else %}
+
+				<div class="movie-item-style-2 userrate">
+                    <h2>You have not rated any movie yet</h2>
+                </div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

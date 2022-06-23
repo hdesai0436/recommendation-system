@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+{% block title %}Index{% endblock %}
+
+
+{% block content %}
+
+
+
+
+<div class="sliderv2 movie-items slider sliderv3">
+	<div class="container">
+		<div class="row">
+	    	<div class="slider-single-item">
+	    		<div class="movie-item">
+	    			
+	    		</div>
+	    		
+	    	</div>
+	    </div>
+	</div>
+</div>
+<div class="movie-items">
+	<div class="container">
+		<div class="row ipad-width">
+			<div class="col-md-8">
+				<div class="title-hd">
+					<h2>in theater</h2>
+					<a href="#" class="viewall">View all <i class="ion-ios-arrow-right"></i></a>
+				</div>
+				<div class="tabs">
+					<ul class="tab-links">
+						<li class="active"><a href="#tab1">#Popular</a></li>
+						<li><a href="#tab2"> #Coming soon</a></li>
+						<li><a href="#tab3">  #Top rated  </a></li>
+						<li><a href="#tab4"> #Most reviewed</a></li>                        
+					</ul>
+				    <div class="tab-content">
+				        <div id="tab1" class="tab active">
+				            <div class="row">
+				            	<div class="slick-multiItem2">
+									{% for i,k in movie_popular.items() %}
+				            		<div class="slide-it">
+								
+				            			<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src="https://image.tmdb.org/t/p/original{{k[2]}}" alt="" width="185" height="284">
+												
+					            			</div>
+											<div class = 'info' style="margin: auto;color: aliceblue;text-align: center;" >
+												<h5 style="color: white; text-align: center;"><a href="#">{{k[0]}}</a></h5>
+					            				<p style="color: white; text-align: center;"><i class="ion-android-star"></i><span>{{k[1]}}</span> /10</p>
+												<div><a href="https://www.youtube.com/embed/{{k[3]}}" class="item item-2 redbtn fancybox-media hvr-grow">Watch Trailer</a></div>
+											</div>
+											
+					            			
+					            		</div>
+									
+				            		</div>
+									{% endfor %}
+				            	</div>
+				            </div>
+				        </div>
+				        <div id="tab2" class="tab">
+				           <div class="row">
+				            	<div class="slick-multiItem2">
+									{% for i,k in up_coming.items() %}
+				            		<div class="slide-it">
+										
+				            			<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src="https://image.tmdb.org/t/p/original{{k[2]}}" alt="" width="350" height="284">
+					            			</div>
+					            			<div class = 'info' style="margin: auto;color: aliceblue;text-align: center;" >
+												<h5 style="color: white; text-align: center;"><a href="#">{{k[0]}}</a></h5>
+					            				<p style="color: white; text-align: center;"><i class="ion-android-star"></i><span>{{k[1]}}</span> /10</p>
+												<div><a href="https://www.youtube.com/embed/{{k[3]}}" class="item item-2 redbtn fancybox-media hvr-grow">Watch Trailer</a></div>
+											</div>
+					            		</div>
+										
+				            		</div>
+									{% endfor %}
+				            	</div>
+				            </div>
+				        </div>
+				        <div id="tab3" class="tab">
+				        	<div class="row">
+				            	<div class="slick-multiItem2">
+									{% for i,k in top_rated.items() %}
+				            		<div class="slide-it">
+				            			
+				            			<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src="https://image.tmdb.org/t/p/original{{k[2]}}" alt="" width="185" height="284">
+					            			</div>
+					            			<div class = 'info' style="margin: auto;color: aliceblue;text-align: center;" >
+												<h5 style="color: white; text-align: center;"><a href="#">{{k[0]}}</a></h5>
+					            				<p style="color: white; text-align: center;"><i class="ion-android-star"></i><span>{{k[1]}}</span> /10</p>
+												<div><a href="https://www.youtube.com/embed/{{k[3]}}" class="item item-2 redbtn fancybox-media hvr-grow">Watch Trailer</a></div>
+											</div>
+					            		</div>
+									
+				            		</div>
+									{% endfor %}
+				            	</div>
+				            </div>
+			       	 	</div>
+			       	 	<div id="tab4" class="tab">
+				        	<div class="row">
+				            	<div class="slick-multiItem2">
+									{% for i,k in thre.items() %}
+				            		<div class="slide-it">
+				            			
+				            			<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src="https://image.tmdb.org/t/p/original{{k[2]}}" alt="" width="185" height="284">
+					            			</div>
+											<div class = 'info' style="margin: auto;color: aliceblue;text-align: center;" >
+												<h5 style="color: white; text-align: center;"><a href="#">{{k[0]}}</a></h5>
+					            				<p style="color: white; text-align: center;"><i class="ion-android-star"></i><span>{{k[1]}}</span> /10</p>
+												<div><a href="https://www.youtube.com/embed/{{k[3]}}" class="item item-2 redbtn fancybox-media hvr-grow">Watch Trailer</a></div>
+											</div>
+					            		</div>
+									
+				            		</div>
+									{% endfor %}
+				            	</div>
+				            </div>
+			       	 	</div>
+				    </div>
+				</div>
+				<div class="title-hd">
+					<h2>on tv</h2>
+					<a href="#" class="viewall">View all <i class="ion-ios-arrow-right"></i></a>
+				</div>
+				<div class="tabs">
+					<ul class="tab-links-2">
+						<li><a href="#tab21">#Popular</a></li>
+						<li class="active"><a href="#tab22"> #Coming soon</a></li>
+						<li><a href="#tab23">  #Top rated  </a></li>
+						<li><a href="#tab24"> #Most reviewed</a></li>                        
+					</ul>
+				    <div class="tab-content">
+				        
+				        
+				       
+			       	 	 
+				    </div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="sidebar">
+					<div class="ads">
+						<img src="images/uploads/ads1.png" alt="">
+					</div>
+					<div class="celebrities">
+						<h4 class="sb-title">Spotlight Celebrities</h4>
+						<div class="celeb-item">
+							<a href="#"><img src="images/uploads/ava1.jpg" alt=""></a>
+							<div class="celeb-author">
+								<h6><a href="#">Samuel N. Jack</a></h6>
+								<span>Actor</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %} Tranding Actors {% endblock %}
+
+
+{% block content %}
+
+<div class="hero common-hero">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="hero-ct">
+					<h1>Tranding celebrity - grid</h1>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- celebrity grid v2 section-->
+<div class="page-single">
+	<div class="container">
+		<div class="row ipad-width2">
+			<div class="col-md-9 col-sm-12 col-xs-12">
+				<div class="row">
+                    {% for i,k in trand_people.items() %}
+                        <div class="col-md-4">
+                            <div class="ceb-item-style-2">
+                                <img src="https://image.tmdb.org/t/p/original{{k[0]}}" alt="" style="width:100px;height:100px;">
+                                <div class="ceb-infor">
+                                    <h2 id = 'actor_name'><a href="#">{{i}}</a></h2>
+                                    <span>{{k[1]}}</span>
+                                </div>
+                            </div>
+                        </div>	
+                    {% endfor %}    
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

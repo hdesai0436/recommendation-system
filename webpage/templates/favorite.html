@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block title %} User Favorite {% endblock %}
+
+{% block content %}
+<div class="hero user-hero">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="hero-ct">
+					<h1>Edward kennedy’s profile</h1>
+					<ul class="breadcumb">
+						<li class="active"><a href="#">Home</a></li>
+						<li> <span class="ion-ios-arrow-right"></span>Profile</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="page-single userfav_list">
+	<div class="container">
+		<div class="row ipad-width2">
+			<div class="col-md-3 col-sm-12 col-xs-12">
+				<div class="user-information">
+					<div class="user-img">
+						<a href="#"><img src="images/uploads/user-img.png" alt=""><br></a>
+						<a href="#" class="redbtn">Change avatar</a>
+					</div>
+					<div class="user-fav">
+						<p>Account Details</p>
+						<ul>
+							<li><a href="{{url_for('authy.profile',user_id=user.id)}}" onclick="loadmore()">Profile</a></li>
+							<li class="active"><a href="{{url_for('authy.user_favorite',user_id=user.id)}}">Favorite movies</a></li>
+							<li><a href="{{url_for('authy.user_rate',user_id=user.id)}}">Rated movies</a></li>
+						</ul>
+					</div>
+					
+				</div>
+			</div>
+			<div class="col-md-9 col-sm-12 col-xs-12">
+				<div class="topbar-filter user">
+					<p>Found <span>1,608 movies</span> in total</p>
+					<label>Sort by:</label>
+
+					<a href="userfavoritelist.html" class="list"><i class="ion-ios-list-outline active"></i></a>
+					<a  href="userfavoritegrid.html" class="grid"><i class="ion-grid "></i></a>
+				</div>
+				<div class="flex-wrap-movielist user-fav-list">
+                    {% if user_favorite|length > 0  %}
+                    {% for i in user_favorite %}
+					<div class="movie-item-style-2">
+						<img src="https://image.tmdb.org/t/p/original{{i[0].poster}}" alt="">
+						<div class="mv-item-infor">
+							<h6><a href="#">{{i[0].title}} <span>{{i[0].release_date}}</span></a></h6>
+							<p class="rate"><i class="ion-android-star"></i><span>{{i[0].vote_average}}</span> /10</p>
+							<p class="describe">{{i[0].overview}}</p>
+							<p class="run-time"> Run Time: {{i[0].runtime}}    .     <span>MMPA: PG-13 </span>    .     <span>Release: {{i[0].release_date}}</span></p>
+							<p>Director: <a href="#">{{i[0].director}}</a></p>
+							
+						</div>
+					</div>
+                    {% endfor %}
+                    {% else %}
+                    <div class="movie-item-style-2">
+                            <h1 style="color: aliceblue;" >You have not selected any favorite movie</h1>
+                     </div>
+
+                    
+                    {% endif %}
+				</div>		
+
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
