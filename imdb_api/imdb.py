@@ -1,9 +1,13 @@
 import requests
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 class Imdb_data():
     def __init__(self):
         self.headers = {
             "X-RapidAPI-Host": "imdb8.p.rapidapi.com",
-            "X-RapidAPI-Key": "013eca4e62msh0076a0f914a6825p109ce0jsne3ad41422ac1"
+            "X-RapidAPI-Key": os.getenv('IMDB_API_KEY')
         }
 
     def BoxOffice(self,imdb_id):
